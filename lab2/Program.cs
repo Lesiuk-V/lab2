@@ -4,6 +4,7 @@ namespace lab2
 {
     class Program
     {
+        //Фунцкія для перевірки чи містить стр1 всі символи стр2
         static void lab2F1(string str1, string str2)
         {
             string str = RemoveDuplicateChars(str1);
@@ -20,6 +21,7 @@ namespace lab2
                 Console.WriteLine($"рядок {str1} містить всі символи {str2}");
             else Console.WriteLine($"рядок {str1} не містить всі символи {str2}");
         }
+        // функція яка заміняє всі символи стр1 рівні символам стр2 на #
         static void lab2F2(string str1, string str2)
         {
             char[] char1 = str1.ToCharArray();
@@ -35,6 +37,7 @@ namespace lab2
             Console.WriteLine($"Замінивши всі символи в Str1 рівні символам з Str2 на символ # отримали: {str1}");
 
         }
+        //функція яка видаляє одинакові символи
         static string RemoveDuplicateChars(string str)
         {
             string result = "";
@@ -43,7 +46,7 @@ namespace lab2
                     result += value;
             return result;
         }
-
+        // функція для перевірки скільки разів символи с стр2 зустрічаються в стр1
         static void lab2F3(string str1, string str2)
         {
             int count = 0;
