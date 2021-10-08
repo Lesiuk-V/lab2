@@ -4,30 +4,39 @@ namespace lab2
 {
     class Program
     {
+        static int CountSymbolOfStr(string Strs)
+        {
+            int count = 0;
+            foreach (char n in Strs)
+            {
+                count++;
+            }
+            return count;
+        }
         //Фунцкія для перевірки чи містить стр1 всі символи стр2
-        static void lab2F1(string str1, string str2)
+        static void CheckSymbols(string str1, string str2, int countStr1, int countStr2)
         {
             string str = RemoveDuplicateChars(str1);
             int count = 0;
-            for (int i = 0; i < str2.Length; i++)
+            for (int i = 0; i < countStr2; i++)
             {
-                for (int j = 0; j < str.Length; j++)
+                for (int j = 0; j < countStr1; j++)
                 {
                     if (str2[i] == str[j])
                         count++;
                 }
             }
-            if (count == str2.Length)
+            if (count == countStr2)
                 Console.WriteLine($"рядок {str1} містить всі символи {str2}");
             else Console.WriteLine($"рядок {str1} не містить всі символи {str2}");
         }
         // функція яка заміняє всі символи стр1 рівні символам стр2 на #
-        static void lab2F2(string str1, string str2)
+        static void ChangeSameSymbols(string str1, string str2, int countStr1, int countStr2)
         {
             char[] char1 = str1.ToCharArray();
-            for (int i = 0; i < str2.Length; i++)
+            for (int i = 0; i < countStr2; i++)
             {
-                for (int j = 0; j < str1.Length; j++)
+                for (int j = 0; j < countStr1; j++)
                 {
                     if (str2[i] == str1[j])
                         char1[j] = '#';
@@ -47,12 +56,12 @@ namespace lab2
             return result;
         }
         // функція для перевірки скільки разів символи с стр2 зустрічаються в стр1
-        static void lab2F3(string str1, string str2)
+        static void CountOfSameSymbols(string str1, string str2, int countStr1, int countStr2)
         {
             int count = 0;
-            for (int i = 0; i < str1.Length; i++)
+            for (int i = 0; i < countStr1; i++)
             {
-                for (int j = 0; j < str2.Length; j++)
+                for (int j = 0; j < countStr2; j++)
                 {
                     if (str1[i] == str2[j])
                         count++;
@@ -64,13 +73,16 @@ namespace lab2
         static void Main(string[] args)
         {
             string str1, str2;
+            
             Console.WriteLine("Введіть перший рядок:");
             str1 = Console.ReadLine();
             Console.WriteLine("Введіть другий рядок:");
             str2 = Console.ReadLine();
-            lab2F1(str1, str2);
-            lab2F2(str1, str2);
-            lab2F3(str1, str2);
+            int countStr1 = CountSymbolOfStr(str1);
+            int countStr2 = CountSymbolOfStr(str2);
+            CheckSymbols(str1, str2, countStr1, countStr2);
+            ChangeSameSymbols(str1, str2, countStr1, countStr2);
+            CountOfSameSymbols(str1, str2, countStr1, countStr2);
         }
     }
 }
